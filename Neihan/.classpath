@@ -17,5 +17,33 @@
 	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Core-2.4.0.jar"/>
 	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Favorite-2.4.0.jar"/>
 	<classpathentry kind="lib" path="libs/ShareSDK-Wechat-Moments-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-SohuSuishenkan-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-SouhuMicroBlog-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Line-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Linkedin-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Mingdao-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-GooglePlus-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Instagram-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-KaiXin-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-KakaoStory-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-KakaoTalk-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Evernote-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Facebook-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Flickr-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Foursquare-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/mframework.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Douban-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Dropbox-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-NetEaseMicroBlog-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Pinterest-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-QQ-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-TencentWeibo-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Tumblr-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Twitter-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-VKontakte-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Yixin-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Yixin-Core-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-Yixin-Moments-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/ShareSDK-YouDao-2.4.0.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
