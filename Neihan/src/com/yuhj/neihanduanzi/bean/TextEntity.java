@@ -18,16 +18,51 @@ public class TextEntity {
 	/**
 	 * 类型
 	 */
-	private int type;
+	protected int type;
 
 	/**
 	 * 创建时间
 	 */
 	private long createtime;
 	/**
-	 * 代表攒的个数
+	 * 上线时间
 	 */
-	private int favoriteCount;
+	private long onlineTime;
+
+	/**
+	 * 显示时间
+	 */
+	private long displayTime;
+	/**
+	 * digg的过个数
+	 */
+	private int diggCount;
+	/**
+	 * 状态，其中的可选值3待分析是社么类型？
+	 */
+	private int status;
+
+	protected int userDigg;
+
+	/**
+	 * 段子的ID,访问详情和评论时作为接口的参数
+	 */
+
+	protected long groupId;
+	/**
+	 * 内容分类类型:1.文本;2.图片
+	 */
+	private int categoryId;
+	protected String content;
+
+	/**
+	 * 代表评论的个数
+	 */
+	protected int commentCount;
+	/**
+	 * 代表用户是否Repin
+	 */
+	private int userRepin;
 
 	/**
 	 * 代表当前用户是否踩了，0代表没有，1代表踩了
@@ -41,6 +76,11 @@ public class TextEntity {
 	/**
 	 * 代表踩得个数
 	 */
+	/**
+	 * 代表攒的个数
+	 */
+	private int favoriteCount;
+
 	private int buryCount;
 
 	/**
@@ -50,21 +90,6 @@ public class TextEntity {
 
 	// TODO 分析这个字段的含义
 	private int label;
-
-	/**
-	 * 文本段子的内容部分（完整部分）
-	 */
-	private String content;
-
-	/**
-	 * 代表评论的个数
-	 */
-	private int commentCount;
-
-	/**
-	 * 状态，其中的可选值3待分析是社么类型？
-	 */
-	private int status;
 
 	/**
 	 * 状态的描述信息<br/>
@@ -88,17 +113,6 @@ public class TextEntity {
 	 *
 	 */
 	// TODO 需要去了解这个字段的含义
-	private int userDigg;
-
-	/**
-	 * digg的过个数
-	 */
-	private int diggCount;
-	/**
-	 * 段子的ID,访问详情和评论时作为接口的参数
-	 */
-
-	private long groupId;
 
 	/**
 	 * 级别，层次 TODO 这个需要分析一下是什么含义,现在有两个地方出现 1.获取接口列表的url里有一个level=6;
@@ -112,49 +126,15 @@ public class TextEntity {
 	private int repinCount;
 
 	/**
-	 * 代表用户是否Repin
-	 */
-	private int userRepin;
-
-	/**
 	 * 是否含有热门评论
 	 */
 	private int hasHotComments;
 
-	/**
-	 * 内容分类类型:1.文本;2.图片
-	 */
-	private int categoryId;
-
 	// private String[] comments;
 
 	// TODO 需要去分析comments这个json数组中的内容是什么？
-	/**
-	 * 上线时间
-	 */
-	private long onlineTime;
-	/**
-	 * 显示时间
-	 */
-	private long displayTime;
 
 	private UserEntity user;
-
-	/**
-	 * { "online_time": 1411878957, "display_time": 1411878957, "group": {
-	 * "create_time": 1411718218.0, "favorite_count": 1209, "user_bury": 0,
-	 * "user_favorite": 0, "bury_count": 1516, "share_url":
-	 * "http://toutiao.com/group/3560859160/?iid=2337593504&app=joke_essay",
-	 * "label": 1, "content":
-	 * "甲:昨天碰到抢劫的，被打了两顿。乙:为啥啊？甲:他问我有钱吗我说没有，他从我身上搜出一包软中华然后就被打了一顿。等他走了，不一会儿又回来打了我一顿，因为他发现里面塞的是白红梅，劫匪走时还留下一句‘没钱还装B’"
-	 * , "comment_count": 177, "status": 3, "has_comments": 0,
-	 * "go_detail_count": 4370, "status_desc": "已发表到热门列表", "user": {
-	 * "avatar_url": "http://p1.pstatp.com/thumb/1367/2213311454", "user_id":
-	 * 3080520868, "name": "请叫我梓安哥", "user_verified": false }, "user_digg": 0,
-	 * "group_id": 3560859160, "level": 4, "repin_count": 1209, "digg_count":
-	 * 18424, "has_hot_comments": 1, "user_repin": 0, "category_id": 1 },
-	 * "comments": [], "type": 1 }
-	 * */
 	public void parseJson(JSONObject json) {
 		if (json != null) {
 			try {
@@ -168,7 +148,7 @@ public class TextEntity {
 				this.userFavorite = group.getInt("favorite_count");
 				this.buryCount = group.getInt("bury_count");
 				this.shareUrl = group.getString("share_url");
-				this.label = group.getInt("label");
+				this.label = group.optInt("label",0);
 				this.content = group.getString("content");
 				this.commentCount = group.getInt("comment_count");
 				this.status = group.getInt("status");
@@ -183,7 +163,7 @@ public class TextEntity {
 				this.level = group.getInt("level");
 				this.repinCount = group.getInt("repin_count");
 				this.diggCount = group.getInt("digg_count");
-				this.hasHotComments = group.getInt("has_hot_comments");
+				this.hasHotComments = group.optInt("has_hot_comments",0);
 				this.userRepin = group.getInt("user_repin");
 				this.categoryId = group.getInt("category_id");
 				this.type = group.getInt("type");
