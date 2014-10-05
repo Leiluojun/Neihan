@@ -47,7 +47,7 @@ public class ImageList {
 
 	public void parseJson(JSONObject jsonObject) {
 		try {
-			largeImgeurls = ParseLargeImageUrlList(jsonObject);
+			largeImgeurls = ParseImageUrlList(jsonObject);
 			uri = jsonObject.getString("uri");
 			width = jsonObject.getString("width");
 			height = jsonObject.getString("height");
@@ -58,7 +58,7 @@ public class ImageList {
 
 	}
 
-	private ArrayList<String> ParseLargeImageUrlList(JSONObject Image)
+	private ArrayList<String> ParseImageUrlList(JSONObject Image)
 			throws JSONException {
 		JSONArray Image_urls = Image.getJSONArray("url_list");
 		int ulen = Image_urls.length();
