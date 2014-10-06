@@ -16,5 +16,10 @@
     <string name="load_succeed">加载成功</string>
     <string name="load_fail">已无更多数据</string>
     <string name="title_activity_text">TextActivity</string>
+    <string name="mian_tab_item_test">段子</string>
+    <string name="main_tab_item_image">图片</string>
+    <string name="main_tab_item_check">审核</string>
+    <string name="main_tab_item_activity">活动</string>
+    <string name="main_tab_item_my">我的</string>
 
 </resources>
