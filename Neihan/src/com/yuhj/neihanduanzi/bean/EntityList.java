@@ -15,18 +15,23 @@ import org.json.JSONObject;
  * @version 1.0
  */
 public class EntityList {
-	private String hasMore;
+	private boolean hasMore;
 	private long minTime;
 	private String tip;
 	private long maxTime;
 	private ArrayList<TextEntity> entitys;
 
+	
+
 	public void parseJson(JSONObject json) throws JSONException {
 		if (json != null) {
-			hasMore = json.getString("has_more");
-			minTime = json.getLong("min_time");
-			tip = json.getString("tip");
-			maxTime = json.getLong("max_time");
+			hasMore = json.getBoolean("has_more");
+			if (hasMore==false) {
+				minTime = json.optLong("min_time");
+			}
+			
+			tip = json.optString("tip");
+			maxTime = json.optLong("max_time");
 			// 从data对象中，获取名称为data的数组
 			JSONArray array = json.getJSONArray("data");
 			int len = array.length();
@@ -54,19 +59,16 @@ public class EntityList {
 						}
 						Entity.parseJson(item);
 						entitys.add(Entity);
-						System.out.println("---->" + Entity.getContent());
+						System.out.println("---->" + Entity.getGroupId());
 					}
-					/*
-					 * ImageEntity imageEntity =new ImageEntity();
-					 * imageEntity.ParseImageItem(item);
-					 */
+					
 				}
 			}
 		}
 
 	}
 
-	public String getHasMore() {
+	public boolean isHasMore() {
 		return hasMore;
 	}
 
@@ -80,6 +82,9 @@ public class EntityList {
 
 	public long getMaxTime() {
 		return maxTime;
+	}
+	public ArrayList<TextEntity> getEntitys() {
+		return entitys;
 	}
 
 }

@@ -2,6 +2,8 @@ package com.yuhj.neihanduanzi.text;
 
 import java.util.ArrayList;
 
+import javax.xml.transform.ErrorListener;
+
 import m.framework.network.ResponseCallback;
 
 import org.json.JSONArray;
@@ -10,9 +12,12 @@ import org.json.JSONObject;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.Response.Listener;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.yuhj.neihanduanzi.R;
 import com.yuhj.neihanduanzi.bean.AdEntity;
+import com.yuhj.neihanduanzi.bean.CommentList;
 import com.yuhj.neihanduanzi.bean.EntityList;
 import com.yuhj.neihanduanzi.bean.ImageEntity;
 import com.yuhj.neihanduanzi.bean.ImageList;
@@ -25,6 +30,10 @@ import android.app.Activity;
 import android.content.Entity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * @name TextActivity
@@ -50,25 +59,67 @@ public class TextActivity extends Activity implements Response.Listener<String> 
 	 */
 	private RequestQueue queue;
 
+	private Button button;
+
+	private TextView textView;
+
+	private Long lastTime = 0l;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_text);
 		queue = Volley.newRequestQueue(this);
 		// 每次获取的文章的个数
-		int itemCount = 30;
-		ClientAPI.getList(queue, CATEGORY_ARTICLE, itemCount, this);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.text, menu);
-		return true;
+		final int itemCount = 30;
+		/*
+		 * button=(Button) findViewById(R.id.button1); textView=(TextView)
+		 * findViewById(R.id.textView1); button.setOnClickListener(new
+		 * OnClickListener() {
+		 * 
+		 * @Override public void onClick(View arg0) { ClientAPI.getList(queue,
+		 * CATEGORY_PICTURE, itemCount,TextActivity.this,lastTime); } });
+		 */
+		button=(Button) findViewById(R.id.button1);
+		textView=(TextView)findViewById(R.id.textView1);
+		button.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		long groupId = 3551461874l;//1410094021l;// 3551461874l;
+		String offsetParam = "offset=0";
+		ClientAPI.getComment(queue, groupId, offsetParam, this);
 	}
 
 	@Override
 	public void onResponse(String result) {
+		try {
+			JSONObject json = new JSONObject(result);
+			CommentList commentList = new CommentList();
+			commentList.parseJson(json);
+			long groupId = commentList.getGroupId();
+			boolean hasMore = commentList.isHasMore();
+			int totalNumber = commentList.getTotalNumber();
+			System.out.println("------>" + hasMore + "-------" + groupId + "------"
+					+ totalNumber);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * 列表回调部分
+	 * 
+	 * @param result
+	 *            void
+	 */
+	public void listOnResponse(String result) {
 		try {
 			JSONObject json = new JSONObject(result);
 			// System.out.println("------->" + json.toString());
@@ -76,6 +127,16 @@ public class TextActivity extends Activity implements Response.Listener<String> 
 			JSONObject object = json.getJSONObject("data");
 			EntityList entityList = new EntityList();
 			entityList.parseJson(object);
+			if (entityList.isHasMore()) {
+				lastTime = entityList.getMinTime();
+				textView.setText("" + lastTime);
+				String tip = entityList.getTip();
+				System.out.println("--$$$$$$$$$$$>tip=" + tip);
+			} else {
+				String tip = entityList.getTip();
+				System.out.println("---------------->tip=" + tip);
+			}
+			// TODO 把entityList这个段子的数据集合体，传递给Listview之类的Adapter即可显示
 
 		} catch (JSONException e) {
 			e.printStackTrace();
