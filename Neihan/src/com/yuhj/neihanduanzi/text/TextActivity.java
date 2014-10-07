@@ -44,6 +44,13 @@ import android.widget.TextView;
  * @version 1.0
  */
 
+/**
+ * 1.列表界面,第一次启动，并且数据为空的时候，自动加载数据
+ * 2.只要列表没有数据，进入这个界面的时候，就尝试加载数据
+ * 3.只要有数据,就不进行数据的加载
+ * 4.进入这个界面并且有数据的情况下,自动检查是否有数据更新，并且显示新信息个数
+ * */
+
 public class TextActivity extends Activity implements Response.Listener<String> {
 	/**
 	 * 分类ID,代表文本
@@ -131,10 +138,10 @@ public class TextActivity extends Activity implements Response.Listener<String> 
 				lastTime = entityList.getMinTime();
 				textView.setText("" + lastTime);
 				String tip = entityList.getTip();
-				System.out.println("--$$$$$$$$$$$>tip=" + tip);
+				
 			} else {
 				String tip = entityList.getTip();
-				System.out.println("---------------->tip=" + tip);
+			
 			}
 			// TODO 把entityList这个段子的数据集合体，传递给Listview之类的Adapter即可显示
 

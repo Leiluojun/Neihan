@@ -27,12 +27,12 @@ public class PullableListView extends ListView implements Pullable
 	{
 		if (getCount() == 0)
 		{
-			// Ã»ÓÐitemµÄÊ±ºòÒ²¿ÉÒÔÏÂÀ­Ë¢ÐÂ
+			// Ã»ï¿½ï¿½itemï¿½ï¿½Ê±ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½
 			return true;
 		} else if (getFirstVisiblePosition() == 0
 				&& getChildAt(0).getTop() >= 0)
 		{
-			// »¬µ½ListViewµÄ¶¥²¿ÁË
+			// ï¿½ï¿½ï¿½ï¿½ListViewï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½
 			return true;
 		} else
 			return false;
@@ -43,11 +43,11 @@ public class PullableListView extends ListView implements Pullable
 	{
 		if (getCount() == 0)
 		{
-			// Ã»ÓÐitemµÄÊ±ºòÒ²¿ÉÒÔÉÏÀ­¼ÓÔØ
+			// Ã»ï¿½ï¿½itemï¿½ï¿½Ê±ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			return true;
 		} else if (getLastVisiblePosition() == (getCount() - 1))
 		{
-			// »¬µ½µ×²¿ÁË
+			// ï¿½ï¿½ï¿½ï¿½ï¿½×²ï¿½ï¿½ï¿½
 			if (getChildAt(getLastVisiblePosition() - getFirstVisiblePosition()) != null
 					&& getChildAt(
 							getLastVisiblePosition()

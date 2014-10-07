@@ -2,8 +2,57 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00ff00"
     android:orientation="vertical" >
-    
+
+    <TextView
+        android:id="@+id/textlist_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="这是一首简单的小情歌" 
+        android:background="@drawable/bg_titlebar"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+       <!--  <ListView
+            android:id="@+id/text_list_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </ListView> -->
+        <com.yuhj.neihanduanzi.widget.PullToRefreshLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/refresh_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <include layout="@layout/refresh_head" />
+            <!-- 支持所有实现Pullable接口的View -->
+            <com.yuhj.neihanduanzi.widget.PullableListView
+                android:id="@+id/text_list_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:dividerHeight="1dp"
+                android:divider="@drawable/bg_tabbar"
+                 />
+            <include layout="@layout/load_more" />
+        </com.yuhj.neihanduanzi.widget.PullToRefreshLayout>
+        <!-- 快速工具条 -->
+        <include
+            android:id="@+id/textlist_quick_tools"
+            layout="@layout/textlist_header_tools" />
+
+        <TextView
+            android:id="@+id/textlist_new_notify"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#550000ff"
+            android:gravity="center"
+            android:text="30条新信息"
+            android:textSize="20dp"
+            android:textColor="#ffffff" />
+    </FrameLayout>
 
 </LinearLayout>

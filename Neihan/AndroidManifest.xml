@@ -24,6 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.yuhj.neihanduanzi.activity.EssesInfoActivity" >
+        </activity>
         <!--
         <activity
             android:name="com.yuhj.neihanduanzi.text.TextActivity"
@@ -33,7 +35,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity>
         -->
     </application>
 

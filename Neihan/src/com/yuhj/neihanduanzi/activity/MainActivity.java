@@ -26,6 +26,11 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class MainActivity extends FragmentActivity implements OnCheckedChangeListener {
 	private ArrayList<Fragment> fragments;
+	private TestFragment testFragment=new TestFragment();
+	private ImageListFragment imageListFragment=new ImageListFragment();
+	private MyFragment myFragment =new MyFragment();
+	private ReviewFragment reviewFragment=new ReviewFragment();
+	private HuodongFragment huodongFragment=new HuodongFragment();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +40,11 @@ public class MainActivity extends FragmentActivity implements OnCheckedChangeLis
 		RadioGroup group = (RadioGroup) findViewById(R.id.main_tab_bar);
 		group.setOnCheckedChangeListener(this);
 		fragments=new ArrayList<Fragment>();
-		fragments.add(new TestFragment());
-		fragments.add(new ImageListFragment());
-		fragments.add(new MyFragment());
-		fragments.add(new ReviewFragment());
-		fragments.add(new HuodongFragment());
+		fragments.add(testFragment);
+		fragments.add(imageListFragment);
+		fragments.add(myFragment);
+		fragments.add(reviewFragment);
+		fragments.add(huodongFragment);
 		Fragment fragment =fragments.get(0);
 		FragmentManager manager =getSupportFragmentManager();
 		FragmentTransaction transaction =manager.beginTransaction();
